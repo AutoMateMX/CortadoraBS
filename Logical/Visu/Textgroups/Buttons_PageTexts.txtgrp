@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="4.12.2.93"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="Buttons_PageTexts">
+  <Property Name="Description" Value="Texts for elements on pages"/>
+  <Property Name="Index" Value="0"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="100029" Value="Contrast"/>
+    <Text ID="100030" Value="Calibration"/>
+    <Text ID="100031" Value="Config."/>
+    <Text ID="100032" Value="Main"/>
+    <Text ID="100033" Value="Service"/>
+    <Text ID="100034" Value="Brightness"/>
+    <Text ID="100035" Value="Example frame"/>
+    <Text ID="100036" Value="History"/>
+    <Text ID="100037" Value="Select Language"/>
+    <Text ID="100038" Value="Calibration"/>
+    <Text ID="100039" Value="Network Configuration"/>
+    <Text ID="100040" Value="IP address:"/>
+    <Text ID="100041" Value="Node number:"/>
+    <Text ID="100042" Value="HH:MM:SS"/>
+    <Text ID="100043" Value="yyyy/mm/dd"/>
+    <Text ID="100044" Value="Time and Date"/>
+    <Text ID="100045" Value="Alarm"/>
+    <Text ID="100046" Value="Chart"/>
+    <Text ID="100047" Value="SDM"/>
+    <Text ID="100048" Value="Carga Drive"/>
+    <Text ID="100049" Value="Motor temp."/>
+    <Text ID="100050" Value="Auto refresh"/>
+    <Text ID="100051" Value="Cursor control"/>
+    <Text ID="100052" Value="Cursor 1"/>
+    <Text ID="100053" Value="Cursor 2"/>
+    <Text ID="100054" Value="View all"/>
+    <Text ID="100055" Value="Time [s]"/>
+    <Text ID="100056" Value=""/>
+    <Text ID="100057" Value=""/>
+    <Text ID="100058" Value=""/>
+    <Text ID="100059" Value=""/>
+    <Text ID="100060" Value=""/>
+    <Text ID="100061" Value="Mode"/>
+    <Text ID="100062" Value="Machine Configuration"/>
+    <Text ID="100063" Value="Estatus"/>
+    <Text ID="100064" Value="OK"/>
+    <Text ID="100065" Value="Close"/>
+    <Text ID="100066" Value="Start"/>
+    <Text ID="100067" Value="Stop"/>
+    <Text ID="100068" Value="Back"/>
+    <Text ID="100069" Value="Reset PLC"/>
+    <Text ID="100070" Value="Factory Settings"/>
+  </TextLayer>
+  <TextLayer LanguageId="es">
+    <Text ID="100029" Value="Contraste"/>
+    <Text ID="100030" Value="Calibración"/>
+    <Text ID="100031" Value="Config."/>
+    <Text ID="100032" Value="Principal"/>
+    <Text ID="100033" Value="Servicio"/>
+    <Text ID="100034" Value="Brillo"/>
+    <Text ID="100035" Value="Marco de ejemplo"/>
+    <Text ID="100036" Value="Historial"/>
+    <Text ID="100037" Value="Seleccionar idioma"/>
+    <Text ID="100038" Value="Calibración"/>
+    <Text ID="100039" Value="Configuración de Red"/>
+    <Text ID="100040" Value="Dirección IP:"/>
+    <Text ID="100041" Value="Número de Nodo:"/>
+    <Text ID="100042" Value="HH:MM:SS"/>
+    <Text ID="100043" Value="yyyy/mm/dd"/>
+    <Text ID="100044" Value="Hora y Fecha"/>
+    <Text ID="100045" Value="Alarma"/>
+    <Text ID="100046" Value="Gráfica"/>
+    <Text ID="100047" Value="SDM"/>
+    <Text ID="100048" Value="Unidad de carga"/>
+    <Text ID="100049" Value="Temp. motor"/>
+    <Text ID="100050" Value="Actualización automática"/>
+    <Text ID="100051" Value="Control del cursor"/>
+    <Text ID="100052" Value="Cursor 1"/>
+    <Text ID="100053" Value="Cursor 2"/>
+    <Text ID="100054" Value="Ver todo"/>
+    <Text ID="100055" Value="Tiempo [s]"/>
+    <Text ID="100056" Value=""/>
+    <Text ID="100057" Value=""/>
+    <Text ID="100058" Value=""/>
+    <Text ID="100059" Value=""/>
+    <Text ID="100060" Value=""/>
+    <Text ID="100061" Value="Modo"/>
+    <Text ID="100062" Value="Configuración Máquina"/>
+    <Text ID="100063" Value="Estatus"/>
+    <Text ID="100064" Value="OK"/>
+    <Text ID="100065" Value="Cerrar"/>
+    <Text ID="100066" Value="Empezar"/>
+    <Text ID="100067" Value="Parar"/>
+    <Text ID="100068" Value="Atrás"/>
+    <Text ID="100069" Value="Reiniciar PLC"/>
+    <Text ID="100070" Value="Ajustes Fábrica"/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="100029" Value="6009"/>
+    <Index ID="100030" Value="6008"/>
+    <Index ID="100031" Value="2"/>
+    <Index ID="100032" Value="1"/>
+    <Index ID="100033" Value="0"/>
+    <Index ID="100034" Value="6010"/>
+    <Index ID="100035" Value="1000"/>
+    <Index ID="100036" Value="6"/>
+    <Index ID="100037" Value="6000"/>
+    <Index ID="100038" Value="6001"/>
+    <Index ID="100039" Value="6002"/>
+    <Index ID="100040" Value="6003"/>
+    <Index ID="100041" Value="6004"/>
+    <Index ID="100042" Value="6005"/>
+    <Index ID="100043" Value="6006"/>
+    <Index ID="100044" Value="6007"/>
+    <Index ID="100045" Value="5"/>
+    <Index ID="100046" Value="3"/>
+    <Index ID="100047" Value="7"/>
+    <Index ID="100048" Value="1200"/>
+    <Index ID="100049" Value="1201"/>
+    <Index ID="100050" Value="1202"/>
+    <Index ID="100051" Value="1203"/>
+    <Index ID="100052" Value="1204"/>
+    <Index ID="100053" Value="1205"/>
+    <Index ID="100054" Value="1206"/>
+    <Index ID="100055" Value="1207"/>
+    <Index ID="100056" Value="1208"/>
+    <Index ID="100057" Value="1209"/>
+    <Index ID="100058" Value="1210"/>
+    <Index ID="100059" Value="1211"/>
+    <Index ID="100060" Value="1212"/>
+    <Index ID="100061" Value="8"/>
+    <Index ID="100062" Value="6011"/>
+    <Index ID="100063" Value="9"/>
+    <Index ID="100064" Value="10"/>
+    <Index ID="100065" Value="11"/>
+    <Index ID="100066" Value="12"/>
+    <Index ID="100067" Value="13"/>
+    <Index ID="100068" Value="14"/>
+    <Index ID="100069" Value="6012"/>
+    <Index ID="100070" Value="6013"/>
+  </IndexMap>
+</TextGroup>

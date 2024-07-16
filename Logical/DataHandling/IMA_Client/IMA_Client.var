@@ -1,0 +1,31 @@
+(********************************************************************
+ * COPYRIGHT -- Bernecker + Rainer
+ ********************************************************************
+ * Program: IMA_Client
+ * File: IMA_Client.var
+ * Author: Bernecker + Rainer
+ * Created: July 17, 2009
+ ********************************************************************
+ * Local variables of program IMA_Client
+ ********************************************************************)
+VAR
+	pDatObjName : UDINT; (*Address of the name of the configuration data object*)
+	statusInit : UINT; (*init status*)
+	errorInfo : imaInfoStruct; (*Structure for outputting error information 
+*)
+	stationId : UDINT; (*identifier used to reference and follow-up on a client/server communication instance
+*)
+	statusComm : UINT; (*communication status*)
+	connInfoPV : imaInfoStruct; (*connection status and error information for variable services 
+*)
+	connInfoAUX : imaInfoStruct; (*Structure for outputting connection status and error information for other services 
+*)
+	statusClose : UINT; (*status of close *)
+END_VAR
+(******************************************* Data Collector variables *********************************************************)
+VAR
+	DataCollectorState : DataCollector_state_enum;
+	enableConnection : BOOL;
+	resetError : BOOL;
+	timeOutConnection : TON;
+END_VAR

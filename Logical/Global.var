@@ -1,0 +1,27 @@
+VAR
+	MODE_SELECTED : gCutter_enum;
+	posTroqueladora : LREAL;
+	SensorSignal : BOOL;
+	MachineStateIndex : UINT := 0;
+	MachineInOperation : BOOL;
+	MachineInitializing : BOOL;
+	MachineAutotuning : BOOL;
+	MachineHoming : BOOL;
+	MachineReady : BOOL;
+	CurrentPage : INT;
+END_VAR
+VAR RETAIN
+	HMI_MODE_SELECTED : gCutter_enum;
+END_VAR
+VAR
+	TotalCutsPerMode : LREAL;
+	BoxIsOpen : BOOL;
+	CycleTime : REAL := 1.6;
+	MinuteInMiliseconds : DINT := 60000;
+	CycleTimeSum : REAL;
+	CutsPerMinute_Distance : REAL;
+	CutsPerMinute_Time : REAL;
+	CutsPerMinute_Sensor : REAL;
+	cutEnabled : BOOL;
+	auxToCut : BOOL;
+END_VAR

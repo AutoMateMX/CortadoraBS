@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.10.6.39 FileVersion="4.9"?>
+<Hardware xmlns="http://br-automation.co.at/AS/Hardware">
+  <Module Name="4PPC70_0702_20B" Type="4PPC70.0702-20B" Version="1.5.4.0">
+    <Connector Name="IF2">
+      <Parameter ID="ActivateDevice" Value="1" />
+    </Connector>
+    <Parameter ID="ConfigurationID" Value="Cortadora_mappMotion_AcpTest" />
+    <Parameter ID="TimerDeviceType" Value="EPLX2X" />
+    <Parameter ID="TimerDevice" Value="4PPC70_0702_20B.IF1" />
+    <Parameter ID="TaskClassIdleTime" Value="2000" />
+    <Group ID="FileDevice1" />
+    <Parameter ID="FileDeviceName1" Value="USER" />
+    <Parameter ID="FileDevicePath1" Value="USER_PATH" />
+    <Parameter ID="KeyMappingFile" Value="VC\4PPC70_0702_20B.dis" />
+  </Module>
+  <Module Name="8EAC0151.001-1" Type="8EAC0151.001-1" Version="2.2.1.0">
+    <Connection Connector="SS" TargetModule="8EI8X8HWS10.xxxx-1" TargetConnector="SS1" />
+  </Module>
+  <Module Name="8EI8X8HWS10.xxxx-1" Type="8EI8X8HWS10.xxxx-1" Version="2.3.1.1">
+    <Connection Connector="PLK1" TargetModule="4PPC70_0702_20B" TargetConnector="IF1" NodeNumber="1">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="MotionTP" Value="Acp10Arnc0" />
+    <Parameter ID="BothEndSwitchesAreNormallyOpen_r1" Value="on" />
+    <Parameter ID="QuickStopIsNormallyOpen_r1" Value="on" />
+  </Module>
+  <Module Name="8LSA55.EA030D000-1" Type="8LSA55.EA030D000-1" Version="1.0.6.40">
+    <Connection Connector="MT" TargetModule="8EI8X8HWS10.xxxx-1" TargetConnector="MT1" />
+  </Module>
+</Hardware>

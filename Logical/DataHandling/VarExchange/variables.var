@@ -1,0 +1,13 @@
+(********************************************************************
+ * COPYRIGHT -- Bernecker + Rainer
+ ********************************************************************
+ * Program: variables
+ * File: variables.var
+ * Author: Bernecker + Rainer
+ * Created: July 17, 2009
+ ********************************************************************
+ * Local variables of program variables
+ ********************************************************************)
+VAR
+	actPosExtEncoder : LREAL;
+END_VAR

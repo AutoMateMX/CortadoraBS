@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="4.12.2.93"?>
+<BitmapGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="NavButton">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="9"/>
+  <Property Name="Translate" Value="False"/>
+  <BitmapLayer LanguageId="neutral">
+    <BitmapRef ID="460" Value="Source[local].Bitmap[MpButton_global_area_pressed]"/>
+    <BitmapRef ID="461" Value="Source[local].Bitmap[MpButton_global_area]"/>
+  </BitmapLayer>
+  <IndexMap>
+    <Index ID="460" Value="1"/>
+    <Index ID="461" Value="0"/>
+  </IndexMap>
+</BitmapGroup>

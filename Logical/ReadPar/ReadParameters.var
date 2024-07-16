@@ -1,0 +1,22 @@
+(********************************************************************
+ * COPYRIGHT -- Bernecker + Rainer
+ ********************************************************************
+ * Program: ReadParameters
+ * File: ReadParameters.var
+ * Author: murguiaj
+ * Created: March 08, 2013
+ ********************************************************************
+ * Local variables of program ReadParameters
+ ********************************************************************)
+VAR
+	MC_BR_CyclicProcessParID_AcpAx_0 : MC_BR_CyclicProcessParID_AcpAx;
+	MC_BR_CyclicProcessParID_AcpAx_1 : MC_BR_CyclicProcessParID_AcpAx;
+	motorTemp : REAL;
+	cargaAcopos : REAL;
+	McAcpAxCycParID_0 : McAcpAxCycParIDType;
+	McAcpAxCycParID_1 : McAcpAxCycParIDType;
+	motorTempParID : UINT := 381;
+	ParIdAccessMode : McAcpAxCycParIDModeEnum := mcACPAX_CYCLIC_PARID_READ;
+	ParIdDataType : McAcpAxDataTypeEnum := mcACPAX_PARTYPE_REAL;
+	EnablePar : BOOL := TRUE;
+END_VAR

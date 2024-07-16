@@ -1,0 +1,24 @@
+(********************************************************************
+ * COPYRIGHT -- AutoMate MX
+ ********************************************************************
+ * Data object: DataMap
+ * File: DataMap.dat
+ * Author: Erick Alcantar
+ * Created: July 17, 2009
+ ********************************************************************
+ * Data object para mapear las variables que se intercambiaran por
+ * INA2000 protocol. Se declaran los paths hacia las variables del
+ * servidor (PLC B&R externo).
+ ********************************************************************)
+;------------------------------------------------------------------------------------------------
+;AsIMA Configuration Data Object
+;------------------------------------------------------------------------------------------------ 
+"[ROUTING_PATH]" ;Section name must be enclosed in brackets (name can be anything)
+"/SECTION=INTERFACE" ;Defines the section type
+"/CN=IF2.3" ;Routing path to the server (IF2 on CP0410 via Ethernet to Node Number 1 -> Server) Warning: 
+;Node numbers must be specified in HEXADECIMAL!
+"[PV_LIST_IO]" ;Section name must be enclosed in brackets (name can be anything)
+"/SECTION=PV" ;Defines the section type 
+"/SV=READ /SERVPV=ExternalEn:MpAxisBasic_externalEncoder.Position /CLNTPV=VarExchang:actPosExtEncoder"
+"/SV=READ /SERVPV=::dieCutterCtrl.status.enableCutterMachine /CLNTPV=::cutEnabled"
+

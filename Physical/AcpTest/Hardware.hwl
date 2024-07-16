@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?AutomationStudio FileVersion="4.9"?>
+<BR.AS.HardwareTopology>
+  <TimeStamps>
+    <TimeStamp LogicalPath="AcpTest.Hardware.hw" LastWriteTime="03/22/2023 02:24:21" />
+  </TimeStamps>
+  <Modules>
+    <Module Name="4PPC70_0702_20B" Type="4PPC70.0702-20B" X="100" Y="100" />
+    <Module Name="8EI8X8HWS10.xxxx-1" Type="8EI8X8HWS10.xxxx-1" X="238.599991" Y="256" />
+    <Module Name="8EAC0151.001-1" Type="8EAC0151.001-1" X="241.4" Y="294.5" />
+    <Module Name="8LSA55.EA030D000-1" Type="8LSA55.EA030D000-1" X="238.599991" Y="509" />
+  </Modules>
+  <Links>
+    <Link From="4PPC70_0702_20B" To="8EI8X8HWS10.xxxx-1" FromPort="IF1" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="145.299988" Y="202" />
+      <Point X="145.299988" Y="202" />
+      <Point X="145.299988" Y="207" />
+      <Point X="145.299988" Y="266.5" />
+      <Point X="238.299988" Y="266.5" />
+      <Point X="246.299988" Y="266.5" />
+      <Point X="246.299988" Y="266.5" />
+    </Link>
+    <Link From="8EI8X8HWS10.xxxx-1" To="8LSA55.EA030D000-1" FromPort="MT1" ToPort="MT" IsRoutedByUser="False">
+      <Point X="265.199982" Y="304.3" />
+      <Point X="265.199982" Y="304.3" />
+      <Point X="285.199982" Y="304.3" />
+      <Point X="295" Y="304.3" />
+      <Point X="295" Y="465" />
+      <Point X="288.099976" Y="465" />
+      <Point X="288.099976" Y="508.099976" />
+      <Point X="288.099976" Y="515.1" />
+      <Point X="288.099976" Y="515.1" />
+    </Link>
+  </Links>
+  <InfoElements />
+</BR.AS.HardwareTopology>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="Program" Language="IEC" Description="IMA client program">IMA_Client</Object>
+    <Object Type="Program" Language="IEC" Description="Variable exchange progra,">VarExchange</Object>
+    <Object Type="DataObject" Language="Simple" Description="configuration dataobject">DataMap</Object>
+  </Objects>
+  <Dependencies>
+    <Dependency ObjectName="asima" />
+  </Dependencies>
+</Package>

@@ -1,0 +1,29 @@
+VAR
+	LockManualCut : USINT := 0; (*Lock = 0 Unlock = 1*)
+	VisualOperationIndicator : USINT;
+	EncoderModeSelected : USINT;
+	HideDistanceMode : USINT;
+	HideOpenBoxWarning : USINT;
+	HideSensorMode : USINT;
+	HideSpeedMode : USINT;
+	HideTimeMode : USINT;
+	LockDistanceInput : USINT := 0; (*Lock = 0 Unlock = 1*)
+	LockDistanceMode : USINT := 0; (*Lock = 0 Unlock = 1*)
+	LockSensorMode : USINT := 0; (*Lock = 0 Unlock = 1*)
+	LockSpeedInput : USINT;
+	LockSpeedMode : USINT;
+	LockStartStop : USINT := 0; (*Lock = 0 Unlock = 1*)
+	LockTimeInput : USINT := 0; (*Lock = 0 Unlock = 1*)
+	LockTimeMode : USINT := 0; (*Lock = 0 Unlock = 1*)
+	OpenBoxLock : USINT;
+	SensorIndicator : USINT := 249;
+	SensorModeSelected : USINT;
+	SpeedModeSelected : USINT;
+	SymbolsColor : USINT := 15;
+	TimeModeSelected : USINT;
+	LanguageSelector : USINT;
+	LanguageCurrent : USINT;
+END_VAR
+VAR RETAIN
+	LanguageAuxiliar : USINT;
+END_VAR

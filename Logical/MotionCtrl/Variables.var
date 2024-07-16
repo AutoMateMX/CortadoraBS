@@ -1,0 +1,189 @@
+(*Time Mode*)
+VAR
+	TimeIsOver : BOOL;
+	CutterTimer : TON;
+	UserTime : DINT;
+END_VAR
+VAR RETAIN
+	HMITime : REAL := 1;
+END_VAR
+VAR
+	NumberOfCuts_Time : LREAL;
+	ElapsedTime : REAL;
+	RemainingTime : REAL;
+END_VAR
+(*Cutter*)
+VAR
+	MpAxisBasic_Cutter : MpAxisBasic;
+	MpAxisBasicPar_Cutter : MpAxisBasicParType;
+	MC_BR_ProcessParID_AcpAx_0 : MC_BR_ProcessParID_AcpAx;
+	ParID_FB_Mode : McAcpAxProcessParIDModeEnum;
+	InitHomingMode : McHomingModeEnum := mcHOMING_ABSOLUTE;
+	HomingMode : McHomingModeEnum := mcHOMING_ABSOLUTE;
+	McAcpAxProcessParIDType_0 : McAcpAxProcessParIDType;
+END_VAR
+VAR CONSTANT
+	DefaultPosition : LREAL := 0.00;
+	DefaultVelocity : REAL := 65000;
+	DefaultDistance : LREAL := 360;
+	DefaultAcceleration : REAL := DefaultVelocity * 10;
+	DefaultDeceleration : REAL := DefaultVelocity * 10;
+END_VAR
+VAR
+	NoHome : BOOL;
+	ReadyToHome : BOOL;
+	ReadyToInitHome : BOOL;
+	ReadyToPower : BOOL;
+	MC_BR_InitHome_AcpAx_0 : MC_BR_InitHome_AcpAx;
+	McAcpAxHomingPar_0 : McAcpAxHomingParType;
+END_VAR
+(*Set Voltage*)
+VAR
+	BusVoltage : REAL := 325;
+	SetVoltage : BOOL;
+END_VAR
+(*Read Encoder 2 Actual Position*)
+VAR
+	MC_BR_CyclicProcessParID_AcpAx_0 : MC_BR_CyclicProcessParID_AcpAx;
+	McAcpAxCycParID_0 : McAcpAxCycParIDType;
+	MaxThreshold : UINT := 18000;
+	MinThreshold : UINT := 2000;
+	StartCount : BOOL;
+	MaxCount : REAL;
+	CountOld : REAL;
+	Count : REAL;
+	RealTurns : REAL;
+	CurrentProductTurns : REAL;
+	NeededTurnsOld : REAL;
+	NeededTurns : REAL;
+	ExceededPart : DINT;
+	PartOfTurn : REAL;
+	FullTurnIncrements : UINT := 20000;
+	FullTurnCount : REAL;
+	EncoderActPosOld : DINT;
+	EncoderActPos : DINT;
+	ReadEncoder : BOOL;
+	Empezar : BOOL; (*AutoStart*)
+	vAxisEncoderActPos : DINT;
+END_VAR
+(*Distance Mode (Encoder 2)*)
+VAR RETAIN
+	HMICuttingLength : REAL := 314.159; (*in mm*)
+END_VAR
+VAR
+	ActualProductLength : REAL;
+	EncoderPerimeter : REAL := 314.159265; (*in mm*)
+END_VAR
+VAR RETAIN
+	EncoderDiameter : REAL := 100; (*in mm*)
+END_VAR
+VAR
+	CorrectDistance : BOOL;
+END_VAR
+VAR RETAIN
+	HMICorrectionFactorMilimeters : REAL;
+	HMICorrectionFactorPercentage : REAL;
+	CorrectionFactor : REAL := 1; (*Value to counter phsysical deviations between machines. Adjust as necessary. Value used in Acopos 1090 0.9957 *)
+END_VAR
+VAR
+	NumberOfCuts_Distance : LREAL;
+	HMIRelativeDistanceOld : REAL;
+	RelativeDistanceOld : REAL;
+	HMIRelativeDistance : REAL;
+	RelativeDistance : REAL;
+	HMITraveledDistance : REAL;
+	TraveledDistance : REAL;
+	HMIRemainingDistance : REAL;
+	RemainingDistance : REAL;
+END_VAR
+VAR RETAIN
+	CuttingOffset : REAL;
+END_VAR
+VAR
+	CalculatedProductSpeed : REAL;
+END_VAR
+VAR RETAIN
+	ClockwiseCount : BOOL := TRUE;
+END_VAR
+(*Write encoder 2 values*)
+VAR
+	MC_BR_ProcessParID_AcpAx_1 : MC_BR_ProcessParID_AcpAx;
+	McAcpAxProcessParIDType_1 : McAcpAxProcessParIDType;
+	LoadUnits : UDINT := 5000;
+	MC_BR_ProcessParID_AcpAx_2 : MC_BR_ProcessParID_AcpAx;
+	McAcpAxProcessParIDType_2 : McAcpAxProcessParIDType;
+	Proportion : REAL := 0.6;
+END_VAR
+VAR RETAIN
+	HMIPulses : REAL := 5000;
+END_VAR
+VAR
+	Pulses : UINT := 20000;
+	AxisDisabled : McAxisPLCopenStateEnum := mcAXIS_DISABLED;
+	AxisStandstill : McAxisPLCopenStateEnum := mcAXIS_STANDSTILL;
+END_VAR
+(*Manual Controls*)
+VAR
+	ManualCut : BOOL;
+	ManualMoveAdditiveNeg : BOOL;
+	ManualMoveAdditivePos : BOOL;
+	ManualMoveAbsolute : BOOL;
+	ManualMoveVelocity : BOOL;
+END_VAR
+VAR RETAIN
+	HomePosition : LREAL := 60;
+END_VAR
+VAR
+	HMIVelocity : REAL := 65000;
+	HMIDistance : LREAL := 10;
+END_VAR
+(* Sensor Mode*)
+VAR
+	RPM : DINT;
+	Torque : REAL;
+	ProductionSpeed : REAL;
+	MC_BR_CyclicProcessParID_AcpAx_1 : MC_BR_CyclicProcessParID_AcpAx;
+	McAcpAxCycParID_1 : McAcpAxCycParIDType;
+	MC_BR_CyclicProcessParID_AcpAx_2 : MC_BR_CyclicProcessParID_AcpAx;
+	McAcpAxCycParID_2 : McAcpAxCycParIDType;
+	MC_BR_CyclicProcessParID_AcpAx_3 : MC_BR_CyclicProcessParID_AcpAx;
+	McAcpAxCycParID_3 : McAcpAxCycParIDType;
+	NumberOfCuts_Sensor : REAL;
+	SensorCutDelay : UDINT := 0;
+	DelayTimer_0 : TON;
+	FilterTimer_0 : TON;
+	FilterActivated : BOOL;
+	TimerStopped : TIME;
+END_VAR
+VAR RETAIN
+	FilterTime : UINT;
+END_VAR
+VAR
+	FilteredCut : BOOL;
+	inputTest : BOOL;
+	FilterActive : BOOL;
+END_VAR
+(*Misc*)
+VAR
+	TotalCurrentCuts : LREAL;
+END_VAR
+VAR RETAIN
+	TotalCuts : REAL;
+END_VAR
+VAR
+	ResetCutsPerMode : BOOL;
+	ResetTotalCuts : BOOL;
+	ParameterReading : ParameterReading_enum;
+	ParCount : USINT;
+	OperationSignal : REAL;
+	OperationSignalOut : USINT;
+	ReadParID : BOOL;
+	MotorTorque : UINT := 277;
+END_VAR
+(*Speed Mode*)
+VAR RETAIN
+	HMIRevolutionsPerSecond : REAL := 1;
+END_VAR
+VAR
+	UnitsPerRevolution : REAL := 360;
+END_VAR

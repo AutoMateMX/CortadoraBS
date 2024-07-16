@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="4.12.2.93"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="MachineStates">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="2"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="96469" Value="Initializing..."/>
+    <Text ID="96470" Value="Autotuning in progress, please wait..."/>
+    <Text ID="96472" Value="Motor ready for operation."/>
+    <Text ID="96473" Value="Distance mode selected."/>
+    <Text ID="96474" Value="Time mode selected."/>
+    <Text ID="96475" Value="Sensor mode selected."/>
+    <Text ID="96477" Value="Operating in Distance mode."/>
+    <Text ID="96478" Value="Operating in Time mode."/>
+    <Text ID="96479" Value="Operating in Sensor mode."/>
+    <Text ID="96471" Value="Homing in progress, please wait..."/>
+    <Text ID="97603" Value="Operating in Speed mode."/>
+    <Text ID="97604" Value="Speed mode selected."/>
+  </TextLayer>
+  <TextLayer LanguageId="es">
+    <Text ID="96469" Value="Inicializando..."/>
+    <Text ID="96470" Value="Autotuning en progreso, por favor espere..."/>
+    <Text ID="96472" Value="Motor listo para operar."/>
+    <Text ID="96473" Value="Modo Distancia seleccionado."/>
+    <Text ID="96474" Value="Modo Tiempo seleccionado."/>
+    <Text ID="96475" Value="Modo sensor seleccionado."/>
+    <Text ID="96477" Value="Operando en modo Distancia."/>
+    <Text ID="96478" Value="Operando en modo Tiempo."/>
+    <Text ID="96479" Value="Operando en modo Sensor."/>
+    <Text ID="96471" Value="Homing en progreso, por favor espere..."/>
+    <Text ID="97603" Value="Operando en modo Velocidad."/>
+    <Text ID="97604" Value="Modo Velocidad seleccionado."/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="96469" Value="0"/>
+    <Index ID="96470" Value="1"/>
+    <Index ID="96472" Value="3"/>
+    <Index ID="96473" Value="4"/>
+    <Index ID="96474" Value="5"/>
+    <Index ID="96475" Value="6"/>
+    <Index ID="96477" Value="7"/>
+    <Index ID="96478" Value="8"/>
+    <Index ID="96479" Value="9"/>
+    <Index ID="96471" Value="2"/>
+    <Index ID="97603" Value="10"/>
+    <Index ID="97604" Value="11"/>
+  </IndexMap>
+</TextGroup>
