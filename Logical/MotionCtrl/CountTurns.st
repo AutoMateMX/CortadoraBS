@@ -8,8 +8,11 @@ ACTION CountTurns:
 	
 
 	
-	IF (RealTurns ) >= (NeededTurns)  OR ManualCut THEN
+	IF (RealTurns ) >= (NeededTurns)  OR ManualCut OR EDGEPOS(oneCutEncoderCutterDieCmd) THEN
+		ManualCut 		:= FALSE;
+		auxToCut		:= FALSE;
 		DelayTimer_0.IN := TRUE;
+		MpAxisBasic_Cutter.MoveAdditive := TRUE;
 		RelativeDistance	:=	((((HMICuttingLength/EncoderPerimeter)*Pulses)*CorrectionFactor) + ((CuttingOffset/EncoderPerimeter)*Pulses));
 		NeededTurns := (RelativeDistance/Pulses) + RealTurns;
 		CurrentProductTurns := 0;

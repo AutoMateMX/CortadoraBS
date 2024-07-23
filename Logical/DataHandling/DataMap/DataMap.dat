@@ -19,6 +19,12 @@
 ;Node numbers must be specified in HEXADECIMAL!
 "[PV_LIST_IO]" ;Section name must be enclosed in brackets (name can be anything)
 "/SECTION=PV" ;Defines the section type 
-"/SV=READ /SERVPV=ExternalEn:MpAxisBasic_externalEncoder.Position /CLNTPV=VarExchang:actPosExtEncoder"
+"/SV=READ /SERVPV=ExternalEn:MpAxisBasic_externalEncoder.Position /CLNTPV=::actPosExtEncoder"
 "/SV=READ /SERVPV=::dieCutterCtrl.status.enableCutterMachine /CLNTPV=::cutEnabled"
+"/SV=READ /SERVPV=ExternalEn:encoderActPosPerRev /CLNTPV=::encActPosPerRev"
+"/SV=READ /SERVPV=ExternalEn:cutEncoderMode /CLNTPV=::oneCutEncoderCutterDieCmd"
+"[PV_LIST_INFO]" ;Section name must be enclosed in brackets (name can be anything)
+"/SECTION=PV" ;Defines the section type 
+"/SV=WRITE /SERVPV=ExternalEn:productLenghtCutter /CLNTPV=MotionCtrl:HMICuttingLength"
+
 

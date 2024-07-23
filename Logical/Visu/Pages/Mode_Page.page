@@ -422,7 +422,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="30"/>
-          <Property Name="Left" Value="49"/>
+          <Property Name="Left" Value="221"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -430,7 +430,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="101"/>
+          <Property Name="Top" Value="65"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.DataHandling.VarExchange.actPosExtEncoder]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="136"/>
@@ -760,7 +760,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="135"/>
+          <Property Name="Top" Value="140"/>
           <Property Name="UnitText" Value="Abbreviation"/>
           <Property Name="UnitTextAlignment" Value="Left"/>
           <Property Name="UnitTextPosition" Value="Right"/>

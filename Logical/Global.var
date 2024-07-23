@@ -22,6 +22,9 @@ VAR
 	CutsPerMinute_Distance : REAL;
 	CutsPerMinute_Time : REAL;
 	CutsPerMinute_Sensor : REAL;
-	cutEnabled : BOOL;
+	cutEnabled : BOOL; (*Info proveniente de la troqueladora*)
 	auxToCut : BOOL;
+	encActPosPerRev : DINT;
+	actPosExtEncoder : LREAL; (*Info proveniente de la troqueladora*)
+	oneCutEncoderCutterDieCmd : BOOL;
 END_VAR

@@ -32,7 +32,7 @@ PROGRAM _INIT
 	MpAxisBasicPar_Cutter.AutoTune.MaxDistance := 5;
 	MpAxisBasicPar_Cutter.AutoTune.MaxPositionError := 2000;
 	
-	//Reading external encoder
+	(*//Reading external encoder
 	MC_BR_CyclicProcessParID_AcpAx_0.Axis := ADR(ExtEncod);
 	MC_BR_CyclicProcessParID_AcpAx_0.DataAddress := ADR(McAcpAxCycParID_0);
 	MC_BR_CyclicProcessParID_AcpAx_0.Mode := mcACPAX_CYCLIC_PARID_READ;
@@ -41,7 +41,7 @@ PROGRAM _INIT
 	McAcpAxCycParID_0.DataType:= mcACPAX_PARTYPE_DINT;
 	McAcpAxCycParID_0.ParID := 246;//423 Actual Position, 246 Actual Position per Revolution
 	McAcpAxCycParID_0.RefreshMode := mcACPAX_CYCLIC_EVERY_RECORD;
-	McAcpAxCycParID_0.VariableAddress := ADR(EncoderActPos);
+	McAcpAxCycParID_0.VariableAddress := ADR(EncoderActPos);*)
 	
 	MpAxisBasic_Cutter.Enable := TRUE;
 	
@@ -79,7 +79,9 @@ PROGRAM _CYCLIC
 	
 			
 			//Start Encoder Position Reading
-			MC_BR_CyclicProcessParID_AcpAx_0.Enable := TRUE;
+			//MC_BR_CyclicProcessParID_AcpAx_0.Enable := TRUE;
+			//EncoderActPos := encActPosPerRev;
+			encActPosPerRev;
 			
 			IF CorrectDistance THEN
 				ActualProductLength := HMICuttingLength + (CuttingOffset *-1);
@@ -116,7 +118,7 @@ PROGRAM _CYCLIC
 			
 			RealTurns := FullTurnCount + PartOfTurn;
 			
-			IF Empezar THEN
+			IF Empezar AND cutEnabled THEN
 				
 				MachineInOperation := TRUE;
 				
@@ -390,7 +392,7 @@ PROGRAM _CYCLIC
 	IF DelayTimer_0.Q THEN
 		
 		DelayTimer_0.IN := FALSE;
-		MpAxisBasic_Cutter.MoveAdditive := TRUE;
+		//MpAxisBasic_Cutter.MoveAdditive := TRUE;
 		
 	END_IF;
 	
