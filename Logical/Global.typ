@@ -6,7 +6,9 @@ TYPE
 		Encoder,
 		Time,
 		Sensor,
-		Speed
+		Speed,
+		EncoderDieCutter,
+		SensorDieCutter
 		);
 	DataCollector_state_enum : 
 		(

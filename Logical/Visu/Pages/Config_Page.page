@@ -425,7 +425,7 @@
           <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.MotionCtrl.Empezar]"/>
           <Property Name="LockingLevel" Value="1"/>
           <Property Name="MaxDatapoint" Value="None"/>
-          <Property Name="MaxIndex" Value="4"/>
+          <Property Name="MaxIndex" Value="6"/>
           <Property Name="MinDatapoint" Value="None"/>
           <Property Name="MinIndex" Value="0"/>
           <Property Name="OptionDatapoint" Value="None"/>

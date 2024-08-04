@@ -10,6 +10,8 @@
     <Text ID="96923" Value="Sensor"/>
     <Text ID="97154" Value="Without selection"/>
     <Text ID="97605" Value="Speed"/>
+    <Text ID="105075" Value="Sensor w/DieCutter"/>
+    <Text ID="105076" Value="Encoder w/DieCutter"/>
   </TextLayer>
   <TextLayer LanguageId="es">
     <Text ID="96921" Value="Distancia"/>
@@ -17,6 +19,8 @@
     <Text ID="96923" Value="Sensor"/>
     <Text ID="97154" Value="Sin selección"/>
     <Text ID="97605" Value="Velocidad"/>
+    <Text ID="105075" Value="Sensor con troquel"/>
+    <Text ID="105076" Value="Ecoder con troquel"/>
   </TextLayer>
   <IndexMap>
     <Index ID="96921" Value="1"/>
@@ -24,5 +28,7 @@
     <Index ID="96923" Value="3"/>
     <Index ID="97154" Value="0"/>
     <Index ID="97605" Value="4"/>
+    <Index ID="105075" Value="6"/>
+    <Index ID="105076" Value="5"/>
   </IndexMap>
 </TextGroup>

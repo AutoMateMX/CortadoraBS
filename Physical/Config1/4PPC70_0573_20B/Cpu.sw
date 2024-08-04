@@ -27,7 +27,7 @@
     <NcDataObject Name="McDriveLog" Source="" Memory="UserROM" Language="Binary" />
   </NcDataObjects>
   <VcDataObjects>
-    <VcDataObject Name="Visu1" Source="Visu.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
+    <VcDataObject Name="Visu" Source="Visu.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
   </VcDataObjects>
   <Binaries>
     <BinaryObject Name="vccdt" Source="" Memory="UserROM" Language="Binary" />
@@ -82,6 +82,8 @@
     <BinaryObject Name="vcpk" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="vcpfppc7" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="vcpdi855" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="mvLoader" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="mCoWebSc" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="arconfig" Source="" Memory="SystemROM" Language="Binary" />
     <BinaryObject Name="asfw" Source="" Memory="SystemROM" Language="Binary" />
     <BinaryObject Name="Cutter" Source="" Memory="UserROM" Language="Binary" />
@@ -95,11 +97,11 @@
     <BinaryObject Name="ashwac" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="sysconf" Source="" Memory="SystemROM" Language="Binary" />
     <BinaryObject Name="User" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="Settings" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="robot2cm" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Visu03" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Visu01" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Visu02" Source="" Memory="UserROM" Language="Binary" />
-    <BinaryObject Name="Visu" Source="" Memory="UserROM" Language="Binary" />
   </Binaries>
   <Libraries>
     <LibraryObject Name="MpBase" Source="Libraries.MpBase.lby" Memory="UserROM" Language="Binary" Debugging="true" />
@@ -127,5 +129,6 @@
     <LibraryObject Name="powerlnk" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="vcresman" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="asepl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>

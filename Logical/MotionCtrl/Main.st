@@ -32,7 +32,7 @@ PROGRAM _INIT
 	MpAxisBasicPar_Cutter.AutoTune.MaxDistance := 5;
 	MpAxisBasicPar_Cutter.AutoTune.MaxPositionError := 2000;
 	
-	(*//Reading external encoder
+	//Reading external encoder
 	MC_BR_CyclicProcessParID_AcpAx_0.Axis := ADR(ExtEncod);
 	MC_BR_CyclicProcessParID_AcpAx_0.DataAddress := ADR(McAcpAxCycParID_0);
 	MC_BR_CyclicProcessParID_AcpAx_0.Mode := mcACPAX_CYCLIC_PARID_READ;
@@ -41,7 +41,7 @@ PROGRAM _INIT
 	McAcpAxCycParID_0.DataType:= mcACPAX_PARTYPE_DINT;
 	McAcpAxCycParID_0.ParID := 246;//423 Actual Position, 246 Actual Position per Revolution
 	McAcpAxCycParID_0.RefreshMode := mcACPAX_CYCLIC_EVERY_RECORD;
-	McAcpAxCycParID_0.VariableAddress := ADR(EncoderActPos);*)
+	McAcpAxCycParID_0.VariableAddress := ADR(EncoderActPos);
 	
 	MpAxisBasic_Cutter.Enable := TRUE;
 	
@@ -79,9 +79,7 @@ PROGRAM _CYCLIC
 	
 			
 			//Start Encoder Position Reading
-			//MC_BR_CyclicProcessParID_AcpAx_0.Enable := TRUE;
-			//EncoderActPos := encActPosPerRev;
-			encActPosPerRev;
+			MC_BR_CyclicProcessParID_AcpAx_0.Enable := TRUE;
 			
 			IF CorrectDistance THEN
 				ActualProductLength := HMICuttingLength + (CuttingOffset *-1);
@@ -118,7 +116,7 @@ PROGRAM _CYCLIC
 			
 			RealTurns := FullTurnCount + PartOfTurn;
 			
-			IF Empezar AND cutEnabled THEN
+			IF Empezar THEN
 				
 				MachineInOperation := TRUE;
 				
@@ -219,6 +217,84 @@ PROGRAM _CYCLIC
 			
 			CycleTimeSum := CycleTimeSum + CycleTime;
 			
+			IF Empezar THEN
+				
+				MachineInOperation := TRUE;
+				SensorSignal := MpAxisBasic_Cutter.Info.DigitalInputsStatus.Trigger1;
+				FilterTimer_0.PT := UINT_TO_TIME(FilterTime);
+				
+				IF NOT FilterActive THEN
+					
+					IF EDGEPOS(MpAxisBasic_Cutter.Info.DigitalInputsStatus.Trigger1 OR inputTest) THEN
+						FilterTimer_0.IN := TRUE;
+						DelayTimer_0.IN := TRUE;
+						FilterActive := TRUE;
+					END_IF;
+					
+				END_IF;
+						
+				IF FilterTimer_0.Q THEN
+					FilterActive := FALSE;
+					FilterTimer_0.IN := FALSE;
+				END_IF;	
+					
+				FilterActive := FilterTimer_0.IN;
+				
+				FilterTimer_0();
+				
+				IF MpAxisBasic_Cutter.MoveDone THEN
+					MpAxisBasic_Cutter.MoveAdditive := FALSE;
+					SensorSignal := FALSE;
+				END_IF;
+				
+				IF EDGEPOS(MpAxisBasic_Cutter.MoveDone) THEN
+					NumberOfCuts_Sensor := NumberOfCuts_Sensor + 1;
+				END_IF;
+				
+			END_IF;
+		
+			TotalCutsPerMode := NumberOfCuts_Sensor;
+			CutsPerMinute_Sensor := NumberOfCuts_Sensor/CycleTimeSum;
+			
+		Speed:
+		
+			MachineInOperation := TRUE;
+			
+			CycleTimeSum := CycleTimeSum + CycleTime;
+			
+			IF Empezar THEN
+	  	
+				MpAxisBasicPar_Cutter.Velocity := HMIRevolutionsPerSecond * UnitsPerRevolution;
+				MpAxisBasicPar_Cutter.Acceleration := MpAxisBasicPar_Cutter.Velocity * 10;
+				MpAxisBasicPar_Cutter.Deceleration := MpAxisBasicPar_Cutter.Velocity * 10;
+				MpAxisBasic_Cutter.MoveVelocity := TRUE;
+				
+			ELSE
+				
+				IF NOT MpAxisBasic_Cutter.IsHomed THEN
+					ManualMoveAbsolute := TRUE;
+				END_IF;
+				
+				MpAxisBasic_Cutter.MoveVelocity := FALSE;
+				
+			END_IF;
+		
+			IF (MpAxisBasic_Cutter.Velocity <> MpAxisBasicPar_Cutter.Velocity) AND Empezar THEN
+				MpAxisBasic_Cutter.Update := TRUE;
+			END_IF;
+		
+			IF MpAxisBasic_Cutter.UpdateDone THEN
+				MpAxisBasic_Cutter.Update := FALSE;
+			END_IF;
+		
+		SensorDieCutter:
+			
+			MpAxisBasicPar_Cutter.Velocity := DefaultVelocity;
+			MpAxisBasicPar_Cutter.Acceleration := DefaultAcceleration;
+			MpAxisBasicPar_Cutter.Deceleration := DefaultDeceleration;
+			
+			CycleTimeSum := CycleTimeSum + CycleTime;
+			
 			IF Empezar AND cutEnabled THEN
 				
 				MachineInOperation := TRUE;
@@ -258,36 +334,98 @@ PROGRAM _CYCLIC
 		
 			TotalCutsPerMode := NumberOfCuts_Sensor;
 			CutsPerMinute_Sensor := NumberOfCuts_Sensor/CycleTimeSum;
-		Speed:
 		
-			MachineInOperation := TRUE;
+		EncoderDieCutter:
+		
+			MpAxisBasicPar_Cutter.Velocity := DefaultVelocity;
+			MpAxisBasicPar_Cutter.Acceleration := DefaultAcceleration;
+			MpAxisBasicPar_Cutter.Deceleration := DefaultDeceleration;
+	
 			
-			CycleTimeSum := CycleTimeSum + CycleTime;
+			//Start Encoder Position Reading
+			encActPosPerRev;
 			
-			IF Empezar THEN
-	  	
-				MpAxisBasicPar_Cutter.Velocity := HMIRevolutionsPerSecond * UnitsPerRevolution;
-				MpAxisBasicPar_Cutter.Acceleration := MpAxisBasicPar_Cutter.Velocity * 10;
-				MpAxisBasicPar_Cutter.Deceleration := MpAxisBasicPar_Cutter.Velocity * 10;
-				MpAxisBasic_Cutter.MoveVelocity := TRUE;
+			IF CorrectDistance THEN
+				ActualProductLength := HMICuttingLength + (CuttingOffset *-1);
+				CorrectionFactor := (HMICuttingLength/ActualProductLength);
+				HMICorrectionFactorPercentage := (CorrectionFactor *100) - 100;
+				CuttingOffset := 0;
+				CorrectDistance := FALSE;
+			END_IF;
+			
+			HMICorrectionFactorMilimeters :=((HMICorrectionFactorPercentage/100) * HMICuttingLength);
+			
+			IF ClockwiseCount THEN
+	  
+				IF EDGEPOS(EncoderActPosOld > EncoderActPos) AND ((EncoderActPosOld - EncoderActPos) > (Pulses*0.995)) THEN
+					FullTurnCount := FullTurnCount + 1;
+				END_IF;
+			
+				PartOfTurn := (DINT_TO_REAL(EncoderActPos)/Pulses);
 				
 			ELSE
 				
-				IF NOT MpAxisBasic_Cutter.IsHomed THEN
-					ManualMoveAbsolute := TRUE;
+				IF EDGEPOS(EncoderActPos > EncoderActPosOld) AND ((EncoderActPos - EncoderActPosOld) > (Pulses*0.995)) THEN
+					FullTurnCount := FullTurnCount + 1;
 				END_IF;
 				
-				MpAxisBasic_Cutter.MoveVelocity := FALSE;
+				PartOfTurn := 1 - (DINT_TO_REAL(EncoderActPos)/Pulses);
 				
 			END_IF;
-		
-			IF (MpAxisBasic_Cutter.Velocity <> MpAxisBasicPar_Cutter.Velocity) AND Empezar THEN
-				MpAxisBasic_Cutter.Update := TRUE;
+
+			IF PartOfTurn >= (0.99) OR PartOfTurn < 0 THEN
+				PartOfTurn := 0;
 			END_IF;
-		
-			IF MpAxisBasic_Cutter.UpdateDone THEN
-				MpAxisBasic_Cutter.Update := FALSE;
-			END_IF;
+			
+			
+			RealTurns := FullTurnCount + PartOfTurn;
+			
+			IF Empezar AND cutEnabled THEN
+				
+				MachineInOperation := TRUE;
+				
+				CycleTimeSum := CycleTimeSum + CycleTime;
+				
+				CountTurns;				
+				
+				IF MpAxisBasic_Cutter.MoveDone THEN
+					MpAxisBasic_Cutter.MoveAdditive := FALSE;
+				END_IF;
+				
+				IF EDGEPOS(MpAxisBasic_Cutter.MoveDone) THEN
+					NumberOfCuts_Distance := NumberOfCuts_Distance + 1;
+				END_IF;
+				
+				RemainingDistance := ((NeededTurns - RealTurns) * EncoderPerimeter);
+				TraveledDistance := HMICuttingLength - RemainingDistance;				
+				
+				HMITraveledDistance := TraveledDistance ;
+				HMIRemainingDistance := RemainingDistance;
+				
+				MC_BR_CyclicProcessParID_AcpAx_0();
+				
+				IF MpAxisBasic_Cutter.Error THEN
+					MpAxisBasic_Cutter.MoveAdditive := FALSE;
+					MpAxisBasic_Cutter.ErrorReset := TRUE;
+				ELSE
+					MpAxisBasic_Cutter.ErrorReset := FALSE;
+				END_IF;
+				
+			END_IF;	
+			
+			IF NOT Empezar THEN
+				
+				
+				HMITraveledDistance := 0 ;
+				HMIRemainingDistance := 0;
+				CurrentProductTurns := 0;
+				NeededTurns := 0;
+				
+				MC_BR_CyclicProcessParID_AcpAx_0.Enable := FALSE;
+				
+			END_IF;	
+			
+			TotalCutsPerMode := NumberOfCuts_Distance;
 		
 	END_CASE;	
 
@@ -392,7 +530,7 @@ PROGRAM _CYCLIC
 	IF DelayTimer_0.Q THEN
 		
 		DelayTimer_0.IN := FALSE;
-		//MpAxisBasic_Cutter.MoveAdditive := TRUE;
+		MpAxisBasic_Cutter.MoveAdditive := TRUE;
 		
 	END_IF;
 	
